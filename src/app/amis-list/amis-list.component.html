@@ -1,0 +1,49 @@
+<div class="amis-container">
+  <div class="amis-header">
+  <h2 class="amis-title">👥 Mes amis</h2>
+
+  <!-- zone actions à droite -->
+  <div class="amis-actions">
+    <!-- interrupteur caché -->
+    <input id="toggle-add" type="checkbox" class="toggle-check" />
+
+    <!-- ⚠️ garde tes classes de bouton existantes, ajoute seulement 'ajouter-ami-btn' si tu veux -->
+    <label for="toggle-add" class="ajouter-ami-btn">
+      <!-- laisse ton contenu de bouton habituel -->
+      ➕ Ajouter un ami
+    </label>
+
+    <!-- champ qui apparaît EXACTEMENT à droite du bouton -->
+    <input
+      type="text"
+      class="slide-input"
+      placeholder="Email ou identifiant…"
+      aria-label="Email ou identifiant"
+    />
+  </div>
+</div>
+
+
+
+
+  <div class="amis-list" *ngIf="amis && amis.length > 0; else noFriends">
+    <div class="ami-card" *ngFor="let ami of amis">
+      <img [src]="ami.image || 'profil/default.png'" alt="Photo ami" class="ami-photo">
+      
+      <div class="ami-info">
+        <h3>
+          {{ ami.nom }} {{ ami.prenom }}
+          <span class="status-dot" [ngClass]="ami.statut == 'actif' ? 'online' : 'offline'"></span>
+        </h3>
+        <p>{{ ami.email }}</p>
+        <p>{{ ami.adresse }}</p>
+      </div>
+
+      <button class="btn-supprimer" (click)="supprimerAmi(ami.id)">❌ Supprimer</button>
+    </div>
+  </div>
+
+  <ng-template #noFriends>
+    <p class="no-friends">Vous n’avez pas encore d’amis 🥲</p>
+  </ng-template>
+</div>

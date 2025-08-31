@@ -1,0 +1,43 @@
+<div class="livrer-colis-container animate-on-scroll" id="livrerSection">
+  <div class="left-panel">
+
+    <div class="title">
+      <img src="home\Icone\boxIcon.png" alt="Icône boîte" />
+      <h2>Envoyez vos colis</h2>
+    </div>
+
+    
+    <p>
+      Grâce à notre service flexible,<br />
+      vous pouvez envoyer tout type de colis<br />
+      du simple paquet au mobilier volumineux<br />
+      en toute sécurité, où que vous soyez en Tunisie
+    </p>
+    <button class="cta-btn">
+      <img src="home\Icone\livrerIcone.png" alt="Icône PDF" />
+      Passer une livraison
+    </button>
+  </div>
+
+  <div class="carousel">
+    <button class="nav-btn" (click)="previous()">&#8249;</button>
+
+    <div class="card" *ngFor="let item of visibleItems">
+      <img [src]="item.image" alt="Colis" />
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+    </div>
+
+    <button class="nav-btn" (click)="next()">&#8250;</button>
+  </div>
+
+  <!-- Pagination numérotée stylée -->
+  <div class="pagination-bar">
+  <span
+    *ngFor="let page of totalPagesArray; let i = index"
+    [class.active]="i === currentPage"
+    (click)="goToPage(i)">
+  </span>
+</div>
+
+</div>

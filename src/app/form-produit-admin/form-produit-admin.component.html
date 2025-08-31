@@ -1,0 +1,135 @@
+<button class="bouton-panier">
+  <img src="ajoutProduit\panier.png" alt="Panier" />
+</button>
+
+<div class="form-container">
+  <h2>🛒 Ajouter un produit</h2>
+  <form [formGroup]="produitForm" (ngSubmit)="ajouterProduit()">
+    
+
+    <!-- Nom du produit -->
+    <!-- Type de produit -->
+<div class="form-group">
+  <label for="type">Type de produit</label>
+  <select id="type" formControlName="type" (change)="onTypeChange()">
+    <option value="">-- Choisir un type --</option>
+    <option value="Standard">Standard (≤ 5kg)</option>
+    <option value="Moyen">Moyen (5–15kg)</option>
+    <option value="Gros">Gros (15–50kg)</option>
+    <option value="Mobilier">Mobilier</option>
+    <option value="Électroménager">Électroménager</option>
+  </select>
+  <div class="error" *ngIf="has('type','required')">Le type est obligatoire.</div>
+</div>
+
+<!-- Nom (texte) -->
+<div class="form-group" *ngIf="type !== 'Mobilier' && type !== 'Électroménager'">
+  <label for="nom">Nom du produit</label>
+  <input type="text" id="nom" formControlName="nom" placeholder="Ex: Montre connectée" />
+  <div class="error" *ngIf="has('nom','required')">Le nom est obligatoire.</div>
+</div>
+
+<!-- Nom (select mobilier) -->
+<div class="form-group" *ngIf="type === 'Mobilier' ">
+  <label for="nom">Nom du produit</label>
+  <select id="nom" formControlName="nom">
+    <option *ngFor="let mobilier of mobiliers" [value]="mobilier">{{ mobilier }}</option>
+    <option value="Autre">Autre</option>
+  </select>
+  <div class="error" *ngIf="has('nom','required')">Le nom est obligatoire.</div>
+</div>
+
+<!-- Nom (select électroménager) -->
+<div class="form-group" *ngIf="type === 'Électroménager'">
+  <label for="nom">Nom du produit</label>
+  <select id="nom" formControlName="nom">
+    <option *ngFor="let electro of electromenagers" [value]="electro">{{ electro }}</option>
+    <option value="Autre">Autre</option>
+  </select>
+  <div class="error" *ngIf="has('nom','required')">Le nom est obligatoire.</div>
+</div>
+
+<!-- Dimensions (si Mobilier) -->
+<div *ngIf="type === 'Mobilier' || type === 'Électroménager'" class="form-group">
+  <label for="hauteur">Hauteur (cm)</label>
+  <input type="number" id="hauteur" formControlName="hauteur" />
+  <div class="error" *ngIf="has('hauteur','required')">La hauteur est obligatoire.</div>
+  <div class="error" *ngIf="has('hauteur','min')">La hauteur doit être ≥ 1.</div>
+</div>
+
+<div *ngIf="type === 'Mobilier' || type === 'Électroménager'" class="form-group">
+  <label for="largeur">Largeur (cm)</label>
+  <input type="number" id="largeur" formControlName="largeur" />
+  <div class="error" *ngIf="has('largeur','required')">La largeur est obligatoire.</div>
+  <div class="error" *ngIf="has('largeur','min')">La largeur doit être ≥ 1.</div>
+</div>
+
+<div *ngIf="type === 'Mobilier' || type === 'Électroménager'" class="form-group">
+  <label for="profondeur">Profondeur (cm)</label>
+  <input type="number" id="profondeur" formControlName="profondeur" />
+  <div class="error" *ngIf="has('profondeur','required')">La profondeur est obligatoire.</div>
+  <div class="error" *ngIf="has('profondeur','min')">La profondeur doit être ≥ 1.</div>
+</div>
+
+<!-- Matière (si Mobilier) -->
+<div *ngIf="type === 'Mobilier'" class="form-group">
+  <label for="matiere">Matière</label>
+  <select id="matiere" formControlName="matiere">
+    <option value="">-- Choisir --</option>
+    <option value="Bois">Bois</option>
+    <option value="Métal">Métal</option>
+    <option value="Plastique">Plastique</option>
+    <option value="Verre">Verre</option>
+    <option value="Autre">Autre</option>
+  </select>
+  <div class="error" *ngIf="has('matiere','required')">La matière est obligatoire.</div>
+</div>
+
+<!-- Quantité -->
+<div class="form-group">
+  <label for="quantite">Quantité</label>
+  <input type="number" id="quantite" formControlName="quantite" />
+  <div class="error" *ngIf="has('quantite','required')">La quantité est obligatoire.</div>
+  <div class="error" *ngIf="has('quantite','min')">La quantité doit être ≥ 1.</div>
+</div>
+
+
+
+<!-- Fragilité -->
+<div class="form-group">
+  <label>Produit fragile ?</label>
+  <select formControlName="fragile">
+    <option value="false">Non</option>
+    <option value="true">Oui</option>
+  </select>
+  <div class="error" *ngIf="has('fragile','required')">Ce champ est obligatoire.</div>
+</div>
+
+<div *ngIf="produitForm.value.fragile === 'true'" class="form-group">
+  <label for="fragileDetail">Détails de la fragilité</label>
+  <textarea id="fragileDetail" formControlName="fragileDetail" placeholder="Ex: surface en verre, composant sensible..."></textarea>
+  <div class="error" *ngIf="has('fragileDetail','required')">Merci de préciser la fragilité.</div>
+</div>
+
+
+<div class="form-group">
+  <label for="image1">Image du produit</label>
+  <input type="file" id="image1" formControlName="image1" (change)="onImageSelected($event)" />
+  <div class="error" *ngIf="has('image1','required')">L'image 1 est obligatoire.</div>
+</div>
+
+<div class="form-group" *ngIf="type === 'Mobilier'|| type === 'Électroménager'">
+  <label>Image 2</label>
+  <input type="file" formControlName="image2" (change)="onImageSelected2($event)" />
+</div>
+
+<div class="form-group" *ngIf="type === 'Mobilier' || type === 'Électroménager'">
+  <label>Image 3</label>
+  <input type="file" formControlName="image3" (change)="onImageSelected3($event)" />
+</div>
+
+
+
+    <button type="submit">➕ Ajouter</button>
+  </form>
+</div>

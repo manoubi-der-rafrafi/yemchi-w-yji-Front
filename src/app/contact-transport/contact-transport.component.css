@@ -1,0 +1,149 @@
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #1f7fcf;
+  font-size: 2rem;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.form-map {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.form-section, .map-section {
+  flex: 1 1 450px;
+}
+
+.input-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 20px;
+  background-color: #1f7fcf;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  
+}
+
+textarea {
+  height: 150px;
+  resize: none;
+}
+
+button {
+  background-color: #002f6c;
+  color: white;
+  padding: 0.7rem 2rem;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 1rem;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+button:hover {
+  background-color: #004a9f;
+}
+
+.horaire-box {
+  background-color: #003b80;
+  color: white;
+  padding: 1rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+.horaire-box input {
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+}
+
+.captcha {
+  margin-bottom: 1rem;
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.mentions {
+  margin-top: 2rem;
+  font-size: 0.6rem;
+  color: #555;
+}
+
+
+.input-group input {
+  width: 100%;
+}
+
+.input-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.input-group > * {
+  flex: 1; /* chacun prend 50% */
+}
+
+input, textarea {
+  box-sizing: border-box; /* important pour que les paddings ne dépassent pas */
+}
+/* Champs de saisie cohérents avec la charte bleu */
+input, textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #E2E8F0;          /* bordure subtile */
+  border-radius: 20px;
+  background-color: #EBF2FA;          /* bleu très clair, pas gris */
+  color: #1F2937;                     /* texte foncé lisible */
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9AA4B2;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #0A58CA;
+  box-shadow: 0 0 0 3px rgba(10, 88, 202, 0.15); /* anneau focus bleu doux */
+}
+
+/* Le champ dans la boîte horaire reste blanc pour le contraste */
+.horaire-box input {
+  background-color: #FFFFFF;
+  color: #1F2937;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+}

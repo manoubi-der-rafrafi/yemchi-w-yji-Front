@@ -1,0 +1,149 @@
+
+ <app-hero-login></app-hero-login> 
+<div class="login-box" role="dialog" aria-labelledby="formTitle">
+  <h2 id="formTitle" style="margin-top: -10px;">Inscrirer vous</h2>
+
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+
+    <!-- Message d'erreur global -->
+    <!-- Champ nom -->
+<div class="input-wrapper">
+  <input
+    type="text"
+    placeholder="Nom"
+    formControlName="nom"
+    required
+    autocomplete="family-name"
+    [attr.aria-invalid]="signUpForm.get('nom')?.invalid && signUpForm.get('nom')?.touched"
+  />
+</div>
+<div class="error" *ngIf="signUpForm.get('nom')?.invalid && signUpForm.get('nom')?.touched">
+  Le nom est requis.
+</div>
+
+<!-- Champ prénom -->
+<div class="input-wrapper">
+  <input
+    type="text"
+    placeholder="Prénom"
+    formControlName="prenom"
+    required
+    autocomplete="given-name"
+    [attr.aria-invalid]="signUpForm.get('prenom')?.invalid && signUpForm.get('prenom')?.touched"
+  />
+</div>
+<div class="error" *ngIf="signUpForm.get('prenom')?.invalid && signUpForm.get('prenom')?.touched">
+  Le prénom est requis.
+</div>
+<!-- Champ e-mail -->
+    <div class="input-wrapper">
+      <img src="login/Email.png" class="icon" alt="Icône email" aria-hidden="true" />
+      <input
+        type="email"
+        placeholder="Email"
+        formControlName="email"
+        required
+        autocomplete="email"
+        [attr.aria-invalid]="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched"
+      />
+    </div>
+    <div class="error" *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched">
+      Adresse email invalide.
+    </div>
+<!-- Champ date de naissance -->
+<div class="input-wrapper">
+  <input
+    type="date"
+    placeholder="Date de naissance"
+    formControlName="date_naissance"
+    required
+    [attr.aria-invalid]="signUpForm.get('date_naissance')?.invalid && signUpForm.get('date_naissance')?.touched"
+  />
+</div>
+<div class="error" *ngIf="signUpForm.get('date_naissance')?.invalid && signUpForm.get('date_naissance')?.touched">
+  La date de naissance est requise.
+</div>
+
+<!-- Champ téléphone -->
+<div class="input-wrapper">
+  <input
+    type="tel"
+    placeholder="Téléphone"
+    formControlName="telephone"
+    required
+    autocomplete="tel"
+    [attr.aria-invalid]="signUpForm.get('telephone')?.invalid && signUpForm.get('telephone')?.touched"
+  />
+</div>
+<div class="error" *ngIf="signUpForm.get('telephone')?.invalid && signUpForm.get('telephone')?.touched">
+  Le numéro invalid .
+</div>
+
+<!-- Champ adresse -->
+<div class="input-wrapper">
+  <input
+    type="text"
+    placeholder="Adresse"
+    formControlName="adresse"
+    required
+    autocomplete="street-address"
+    [attr.aria-invalid]="signUpForm.get('adresse')?.invalid && signUpForm.get('adresse')?.touched"
+  />
+</div>
+<div class="error" *ngIf="signUpForm.get('adresse')?.invalid && signUpForm.get('adresse')?.touched">
+  L'adresse est requise.
+</div>
+<!-- Champ mot de passe -->
+<div class="input-wrapper">
+  <img src="login/security.png" class="icon" alt="Icône mot de passe" aria-hidden="true" />
+  <input
+    [type]="showPass ? 'text' : 'password'"
+    placeholder="Mot de passe (min. 8 caractères)"
+    formControlName="password"
+    required
+    autocomplete="new-password"
+    minlength="8"
+    [attr.aria-invalid]="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched"
+  />
+  <button
+    type="button"
+    class="eye-btn"
+    (click)="togglePass()"
+    [attr.aria-label]="showPass ? 'Masquer le mot de passe' : 'Afficher le mot de passe'"
+  >
+    <img
+      [src]="showPass ? 'login/security.png' : 'login/yeux.png'"
+      alt="Afficher / masquer le mot de passe"
+      aria-hidden="true"
+    />
+  </button>
+</div>
+<div class="error" *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched">
+  Le mot de passe doit contenir au moins 8 caractères.
+</div>
+
+<!-- Champ confirmer mot de passe -->
+<div class="input-wrapper">
+  <img src="login/security.png" class="icon" alt="Icône confirmer mot de passe" aria-hidden="true" />
+  <input
+    [type]="showPass ? 'text' : 'password'"
+    placeholder="Confirmer le mot de passe"
+    formControlName="confirmPassword"
+    required
+    autocomplete="new-password"
+    [attr.aria-invalid]="signUpForm.get('confirmPassword')?.invalid && signUpForm.get('confirmPassword')?.touched"
+  />
+</div>
+<div class="error" *ngIf="signUpForm.get('confirmPassword')?.invalid && signUpForm.get('confirmPassword')?.touched">
+  Les mots de passe ne correspondent pas.
+</div>
+
+
+    <br />
+
+    <!-- Bouton de connexion -->
+     <button type="submit" class="primary">Sign Up</button>
+
+    <br /><br />
+  </form>
+</div>

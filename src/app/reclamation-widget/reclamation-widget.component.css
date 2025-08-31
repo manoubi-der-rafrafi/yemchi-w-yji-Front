@@ -1,0 +1,140 @@
+.reclamation-widget {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff7ef;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  background: url('/home/back_Section.jpg') no-repeat center; 
+}
+
+.left-section {
+  flex: 1;
+  min-width: 280px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title h2 {
+  color: #0797b5;
+  margin: 0;
+}
+
+.title img {
+  width: 60px;
+  height: 60px;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 1rem 0 2rem 0;
+}
+
+.cta-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #0797b5;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+  background-color: #057a91;
+}
+
+.cta-btn img {
+  width: 40px;
+}
+
+.right-section img {
+  max-width: 600px;
+  margin-left: -100px;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@media (max-width: 768px) {
+  .reclamation-widget {
+    flex-direction: column;       /* passe en colonne */
+    text-align: center;           /* centre le texte */
+    padding: 1.5rem 1rem;
+  }
+
+  .left-section {
+    min-width: unset;             /* supprime min-width */
+    width: 100%;                  /* prend toute la largeur */
+  }
+
+  .title {
+    justify-content: center;      /* centre le titre + icône */
+  }
+
+  .text {
+    font-size: 14px;              /* un peu plus petit */
+    line-height: 1.5;
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  .cta-btn {
+    justify-content: center;      /* centre bouton */
+    width: 100%;                  /* bouton plein largeur */
+    max-width: 280px;             /* mais pas trop large */
+    margin: 0 auto;
+  }
+
+  .right-section img {
+    max-width: 70%;               /* réduit l’image */
+    margin: 1rem auto 0 auto;     /* centre l’image */
+    display: block;
+  }
+}
+
+/* Encore plus petit (mobile < 480px) */
+@media (max-width: 480px) {
+  .text {
+    font-size: 13px;
+  }
+  .cta-btn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+  .title img {
+    width: 40px;
+    height: 40px;
+  }
+  .title h2 {
+    font-size: 18px;
+  }
+}

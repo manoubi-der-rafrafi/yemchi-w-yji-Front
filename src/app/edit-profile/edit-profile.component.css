@@ -1,0 +1,123 @@
+/* ====== Portée pour écraser le CSS global ====== */
+.auth-scope * { box-sizing: border-box; }
+
+/* Page centrée */
+.auth-scope {
+  display: grid;
+  place-items: start center;
+  padding: 32px 16px 56px;
+}
+
+/* Carte blanche arrondie avec ombre douce (style image 1) */
+.auth-scope .auth-card {
+  width: min(92vw, 640px);
+  background: #fff !important;
+  border-radius: 28px !important;
+  padding: 28px 28px 24px !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,.08) !important;
+  border: 1px solid #eef2f7 !important;
+}
+
+/* Titre centré */
+.auth-scope .auth-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 6px 0 20px;
+}
+
+/* Form en colonne unique + gap généreux */
+.auth-scope .auth-form {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+}
+
+/* Masquer visuellement les labels mais les garder accessibles */
+.auth-scope .sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* Champ avec icône à gauche */
+.auth-scope .input-wrap { position: relative !important; }
+.auth-scope .input-wrap .icon {
+  position: absolute !important;
+  left: 16px; top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  opacity: .55;
+  color: #567;
+}
+.auth-scope .input-wrap .icon svg { fill: currentColor; }
+
+/* ====== Inputs façon “carte signup” ====== */
+.auth-scope .input-wrap input {
+  width: 100% !important;
+  height: 56px !important;
+  padding: 14px 16px 14px 48px !important; /* place pour l’icône */
+  border: 1px solid #e5e7eb !important;
+  border-radius: 16px !important;
+  background: #fff !important;
+  font-size: .98rem !important;
+  outline: none !important;
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease !important;
+}
+.auth-scope .input-wrap input::placeholder { color: #9aa4b2 !important; }
+.auth-scope .input-wrap input:focus {
+  border-color: #0ea5e9 !important;
+  box-shadow: 0 0 0 4px rgba(14,165,233,.15) !important;
+}
+
+/* Messages d'erreur */
+.auth-scope .error {
+  color: #c0392b !important;
+  font-size: .82rem;
+  margin-top: -6px;
+  padding-left: 6px;
+}
+
+/* Actions */
+.auth-scope .actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* Boutons */
+.auth-scope .btn {
+  appearance: none;
+  border: 1px solid transparent;
+  border-radius: 16px !important;
+  padding: 14px 18px !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+  line-height: 1;
+  transition: background-color .15s ease, border-color .15s ease, transform .05s ease;
+}
+.auth-scope .btn-primary {
+  flex: 1;
+  background: #0ea5e9 !important;
+  color: #fff !important;
+  border-color: #0ea5e9 !important;
+}
+.auth-scope .btn-primary:hover:not(:disabled) { background: #0284c7 !important; border-color: #0284c7 !important; }
+.auth-scope .btn-primary:active:not(:disabled) { transform: translateY(1px); }
+.auth-scope .btn-primary:disabled { opacity: .6; cursor: not-allowed; }
+
+.auth-scope .btn-ghost {
+  background: #f7fafc !important;
+  color: #0f172a !important;
+  border-color: #e2e8f0 !important;
+}
+.auth-scope .btn-ghost:hover { background: #eef2f7 !important; }
+
+/* Mobile */
+@media (max-width: 520px) {
+  .auth-scope .auth-card { border-radius: 22px !important; padding: 22px 18px !important; }
+  .auth-scope .input-wrap input { height: 54px !important; border-radius: 14px !important; }
+  .auth-scope .btn { padding: 12px 16px !important; border-radius: 14px !important; }
+}

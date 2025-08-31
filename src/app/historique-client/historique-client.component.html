@@ -1,0 +1,111 @@
+<!-- ... en-tête, filtres etc. (inchangés) ... -->
+<div class="page-title">
+  <h2>Historique de mes commandes</h2>
+  <p class="subtitle">Consultez et suivez vos commandes passées facilement</p>
+</div>
+
+
+<div *ngIf="loading">Chargement…</div>
+<div *ngIf="!loading && error" class="error">{{ error }}</div>
+
+<div class="historique-wrapper" *ngIf="!loading && !error">
+  <!-- Filtres -->
+  <div class="filters">
+    <input
+      type="search"
+      placeholder="Rechercher (id, départ, destination)…"
+      [(ngModel)]="q"
+      (input)="applyFilters()"
+    />
+    <select [(ngModel)]="statut" (change)="applyFilters()">
+      <option value="tous">Tous les statuts</option>
+      <option value="en_attente">En attente</option>
+      <option value="confirmer">Confirmée</option>
+      <option value="en_cours">En cours</option>
+      <option value="livree">Livrée</option>
+      <option value="annulee">Annulée</option>
+    </select>
+  </div>
+<div class="card table-card" *ngIf="filtered.length; else emptyState">
+  <div class="table-responsive">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Départ</th>
+          <th>Destination</th>
+          <th>Statut</th>
+          <th>Prix</th>
+          <th>Paiement</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <!-- NOTE: on affiche pageSlice à la place de filtered -->
+        <tr *ngFor="let c of pageSlice">
+          <td class="nowrap">
+            {{ c.date_demande | date:'yyyy-MM-dd HH:mm' }}
+          </td>
+
+          <td class="td-ellipsis" title="{{ c.localisation_depart }}">
+            {{ c.localisation_depart }}
+          </td>
+
+          <td class="td-ellipsis" title="{{ c.destination }}">
+            {{ c.destination }}
+          </td>
+
+          <td>
+            <span class="badge" [ngClass]="getStatusClass(c.statut)">
+              {{ c.statut || '—' }}
+            </span>
+          </td>
+
+          <td class="nowrap">
+            {{ c.prix | number:'1.2-2' }} DT
+          </td>
+
+          <td class="nowrap">
+            {{ c.mode_paiement }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FOOTER PAGINATION -->
+  <div class="pagination-bar">
+    <div class="left">
+      <label>Afficher</label>
+      <select [ngModel]="pageSize" (ngModelChange)="onChangePageSize($event)">
+        <option *ngFor="let s of pageSizes" [value]="s">{{ s }}</option>
+      </select>
+      <span>par page</span>
+      <span class="muted">
+        • {{ (pageIndex - 1) * pageSize + 1 | number }}
+        –
+        {{ Math.min(pageIndex * pageSize, totalItems) | number }}
+        sur {{ totalItems | number }}
+      </span>
+    </div>
+
+    <div class="right">
+      <button class="page-btn" [disabled]="pageIndex === 1" (click)="prev()">Précédent</button>
+
+      <button
+        class="page-btn num"
+        *ngFor="let p of [].constructor(totalPages); let i = index"
+        [class.active]="pageIndex === i + 1"
+        (click)="goToPage(i + 1)"
+      >
+        {{ i + 1 }}
+      </button>
+
+      <button class="page-btn" [disabled]="pageIndex === totalPages" (click)="next()">Suivant</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #emptyState>
+  <div class="empty">Aucune commande trouvée.</div>
+</ng-template>

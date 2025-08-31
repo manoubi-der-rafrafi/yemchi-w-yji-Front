@@ -1,0 +1,82 @@
+/* ================= Base ================= */
+html, body { height: 100%; margin: 0; }
+body { overflow-x: hidden; }
+
+/* Hauteur compacte par défaut (ajuste à ton goût) */
+:root{
+  --hero-max-h: 56vh;   /* limite max pour garder la section courte */
+}
+
+/* ================= Hero full-bleed ================= */
+.hero{
+  position: relative;
+  left: 50%;
+  width: 100vw;                  /* pleine largeur, même dans un container */
+  transform: translateX(-50%);
+  overflow: hidden;
+  isolation: isolate;            /* z-index prévisible pour les overlays */
+}
+
+/* Image entière, pas de recadrage, hauteur plafonnée */
+.hero-img{
+  display: block;
+  width: 100vw;
+  height: auto;                  /* respecte le ratio 3:2 */
+  max-height: var(--hero-max-h); /* section compacte */
+  margin-inline: auto;
+}
+
+/* Voile pour le contraste du texte */
+.hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,.35), transparent 40%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Contenu centré */
+.overlay{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: clamp(12px, 3vw, 48px);
+  z-index: 2;
+}
+
+.content{ max-width: 800px; font-family: 'Montserrat', sans-serif; }
+h1{ font-size: clamp(2rem, 4vw, 3.2rem); margin: 0 0 .5rem; font-weight: 700; }
+.subtitle{ font-size: clamp(1rem, 2vw, 1.25rem); margin: 0 0 1.25rem; font-weight: 500; }
+.description{ font-size: clamp(.95rem, 1.6vw, 1.05rem); line-height: 1.7; margin: 0 0 1.8rem; font-weight: 500; }
+.description strong{ font-weight: 700; }
+.contact{
+  background:#1ea6da; color:#fff; border:0; border-radius:20px;
+  padding:.6rem 1.2rem; font-weight:700; cursor:pointer; transition:background .25s ease;
+}
+.contact:hover{ background:#0d8cb7; }
+
+/* ================= Forme en V (clip-path) ================= */
+/* On découpe la section (image + overlay + contenu) en V au bas */
+.hero--clip{
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+}
+
+/* ================= Responsive ================= */
+/* Ecrans très larges : encore un peu plus compact si besoin */
+@media (min-aspect-ratio: 16/9){
+  :root{ --hero-max-h: 52vh; }
+}
+
+/* Mobile / tablette : on retire le V (meilleur rendu) et on garde lisible */
+@media (max-width: 900px){
+  :root{ --hero-max-h: 60vh; }             /* un peu plus haut sur mobile */
+  .hero--clip{
+    clip-path: none;
+    border-radius: 0 0 18px 18px;          /* arrondi doux à la place du V */
+  }
+  .content{ max-width: 95vw; }
+}

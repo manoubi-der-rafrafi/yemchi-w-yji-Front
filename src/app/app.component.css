@@ -1,0 +1,140 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  background: #f4fafd; /* couleur de fond mobile */
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+/* Simule un mobile en bloquant la largeur */
+.app-mobile-mockup {
+  max-width: 430px;     /* Largeur typique iPhone 12/13/14 */
+  min-width: 320px;     /* Largeur mobile minimale */
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #fff;
+  box-shadow: 0 0 24px 0 rgba(0,0,0,0.11);
+  position: relative;
+  overflow-x: hidden;
+}
+.fixed-contact-icons {
+  position: fixed;
+  top: 33%;
+  right: 0;
+  background-color: #0797b5;
+  border-radius: 20px 0 0 20px;
+  padding: 1rem 0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0rem;
+  z-index: 1000;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.fixed-contact-icons a img {
+  width: 60px;
+  height: 60px;
+  filter: brightness(0) invert(1); /* makes it white */
+  transition: transform 0.2s ease;
+}
+
+.fixed-contact-icons a:hover img {
+  transform: scale(1.2);
+}
+.simple-footer {
+  background-color: #0071b9;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 24px;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+.footer-center {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+}
+
+.footer-center a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-center a:hover,
+.footer-right a:hover {
+  text-decoration: underline;
+}
+
+.footer-right {
+  text-align: right;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.footer-right a {
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .simple-footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .footer-right {
+    order: 2;
+  }
+
+  .footer-center {
+    order: 1;
+  }
+}
+.scroll-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #f59c1a; /* orange */
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 16px solid white;
+}
+.main-container {
+  flex: 1 0 auto;
+}
+.simple-footer {
+  flex-shrink: 0;
+}

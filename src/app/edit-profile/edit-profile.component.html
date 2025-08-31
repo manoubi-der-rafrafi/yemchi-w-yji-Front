@@ -1,0 +1,124 @@
+<section class="auth-scope">
+  <div class="auth-card">
+    <h1 class="auth-title">Modifier mon profil</h1>
+
+    <form class="auth-form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <!-- Nom -->
+      <label class="sr-only" for="nom">Nom</label>
+      <div class="input-wrap">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/>
+          </svg>
+        </span>
+        <input
+          id="nom"
+          type="text"
+          formControlName="nom"
+          placeholder="Nom"
+          [attr.aria-invalid]="f['nom'].touched && f['nom'].invalid"
+        />
+      </div>
+      <small class="error" *ngIf="(f['nom'].touched||f['nom'].dirty) && f['nom'].invalid">
+        Nom requis (lettres, espaces, - ').
+      </small>
+
+      <!-- Prénom -->
+      <label class="sr-only" for="prenom">Prénom</label>
+      <div class="input-wrap">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/>
+          </svg>
+        </span>
+        <input
+          id="prenom"
+          type="text"
+          formControlName="prenom"
+          placeholder="Prénom"
+          [attr.aria-invalid]="f['prenom'].touched && f['prenom'].invalid"
+        />
+      </div>
+      <small class="error" *ngIf="(f['prenom'].touched||f['prenom'].dirty) && f['prenom'].invalid">
+        Prénom requis (lettres, espaces, - ').
+      </small>
+
+      <!-- Email (facultatif : laissé commenté si non présent dans le form)
+      <label class="sr-only" for="email">Email</label>
+      <div class="input-wrap">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v.4l-10 6.25L2 6.4V6Zm0 2.9V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8.9l-10 6.25Z"/>
+          </svg>
+        </span>
+        <input id="email" type="email" placeholder="Email" />
+      </div>
+      -->
+
+      <!-- Date de naissance -->
+      <label class="sr-only" for="date_naissance">Date de naissance</label>
+<div class="input-wrap">
+  <span class="icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="20" height="20">
+      <path d="M7 2v2H5a2 2 0 0 0-2 2v2h18V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2ZM3 10v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10Z"/>
+    </svg>
+  </span>
+  <input
+    id="date_naissance"
+    type="date"
+    formControlName="date_naissance"
+    [attr.aria-invalid]="(f['date_naissance'].touched && f['date_naissance'].invalid) ? 'true' : 'false'"
+  />
+</div>
+      <small class="error" *ngIf="(f['date_naissance'].touched||f['date_naissance'].dirty) && f['date_naissance'].invalid">
+        La date de naissance est requise.
+      </small>
+
+      <!-- Téléphone -->
+      <label class="sr-only" for="telephone">Téléphone</label>
+      <div class="input-wrap">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.36 11.36 0 0 0 3.56.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 7a1 1 0 0 1 1-1h2.49a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.56 1 1 0 0 1-.24 1.01Z"/>
+          </svg>
+        </span>
+        <input
+          id="telephone"
+          type="tel"
+          formControlName="telephone"
+          placeholder="Téléphone"
+          [attr.aria-invalid]="f['telephone'].touched && f['telephone'].invalid"
+        />
+      </div>
+      <small class="error" *ngIf="(f['telephone'].touched||f['telephone'].dirty) && f['telephone'].invalid">
+        Numéro invalide (8 chiffres).
+      </small>
+
+      <!-- Adresse -->
+      <label class="sr-only" for="adresse">Adresse</label>
+      <div class="input-wrap">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5Z"/>
+          </svg>
+        </span>
+        <input
+          id="adresse"
+          type="text"
+          formControlName="adresse"
+          placeholder="Adresse"
+          [attr.aria-invalid]="f['adresse'].touched && f['adresse'].invalid"
+        />
+      </div>
+      <small class="error" *ngIf="(f['adresse'].touched||f['adresse'].dirty) && f['adresse'].invalid">
+        L'adresse est requise.
+      </small>
+
+      <!-- Actions -->
+      <div class="actions">
+        <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Enregistrer</button>
+        <button class="btn btn-ghost" type="button" (click)="cancel()">Annuler</button>
+      </div>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>Yemchi w Yji – Votre partenaire de livraison à l’écoute</h2>
+  <p class="subtitle">Besoin d’aide ou d’informations ? Remplissez le formulaire ci-dessous, nous sommes là pour vous accompagner.</p>
+
+  <div class="form-map">
+    <!-- Formulaire -->
+    <div class="form-section">
+      <div class="input-group">
+        <input type="text" placeholder="Votre nom" [(ngModel)]="nom">
+        <input type="email" placeholder="Votre email" [(ngModel)]="email">
+      </div>
+      <input type="tel" placeholder="Votre numéro de téléphone" [(ngModel)]="telephone">
+      <textarea placeholder="Votre message" [(ngModel)]="message"></textarea>
+      
+      
+      <button (click)="envoyerFormulaire()">Envoyer</button>
+    </div>
+
+    <!-- Horaire + Map -->
+    <div class="map-section">
+      <div class="horaire-box">
+        <h3>Nos horaires</h3>
+        <p>Du lundi au samedi : de 10 h à 18 h</p>
+        <label>Adresse de départ :</label>
+        <input type="text" [(ngModel)]="adresseDepart" placeholder="Saisir votre adresse">
+        <button (click)="calculerItineraire()">Calculer l'itinéraire</button>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div class="mentions">
+    <p>
+        Pour traiter votre demande, local.fr utilisera et conservera vos données personnelles pendant 2 ans après notre dernier contact. Elles resteront confidentielles et ne seront pas <br> partagées avec des tiers. <br>
+        Conformément à la loi Informatique et Libertés du 6 janvier 1978 modifiée, vous bénéficiez d'un droit <br> l'accès et de rectification des données vous concernant, d'un droit d'opposition pour motifs légitimes, d'un droit à l'effacement des données. Vous disposez également d'un droit à la récupération et à la portabilité des données dans certains cas <br> spécifiquement prévus par la loi.
+    </p>
+  </div>
+</div>

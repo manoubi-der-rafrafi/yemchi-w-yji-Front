@@ -1,0 +1,191 @@
+.produits-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.contenu-principal {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  border-left: 1px solid #eee;
+}
+
+
+.liste-produits {
+  flex: 2;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+tr:hover {
+  background-color: #f8f9fa;
+}
+
+.article {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.article img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+
+.modifier {
+  color: blue;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.supprimer {
+  color: red;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.total-gauche {
+  padding: 10px;
+  background: #f7f7f7;
+  border-radius: 5px;
+}
+
+.resume-commande {
+  flex: 1;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  height: 250px;
+}
+
+button[class^="btn-"] {
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* AJOUTER */
+.btn-ajout {
+  background: linear-gradient(to right, #1ba4c7, #2bd7b3);
+  
+}
+.btn-ajout:hover {
+  background: linear-gradient(to right, #1998b9, #23c4a5);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* CONFIRMER */
+.btn-confirmation {
+  background: linear-gradient(to right, #28a745, #34d058);
+  margin-top: 10px;
+}
+.btn-confirmation:hover {
+  background: linear-gradient(to right, #218838, #2ebf50);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* SUPPRIMER */
+.btn-suppression {
+  background: linear-gradient(to right, #dc3545, #f06171);
+  margin-top: 10px;
+}
+.btn-suppression:hover {
+  background: linear-gradient(to right, #c82333, #e44c5c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+@media screen and (max-width: 768px) {
+  .contenu-principal {
+    flex-direction: column;
+  }
+
+  .resume-commande {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+/* ===== Empty State ===== */
+.empty-state {
+  border: 1px dashed #ddd;
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: center;
+  background: #fafafa;
+  max-width: 720px;
+  margin: 0 auto;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.empty-state h3 {
+  margin: 8px 0 6px;
+  font-size: 1.25rem;
+}
+
+.empty-state p {
+  margin: 0 auto 16px;
+  color: #666;
+  max-width: 520px;
+}
+
+.empty-emoji {
+  font-size: 48px;
+  line-height: 1;
+}
+
+.empty-actions {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* skeleton pour le chargement */
+.skeleton {
+  background: linear-gradient(90deg, #f2f2f2 25%, #f7f7f7 37%, #f2f2f2 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.25s infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
+/* Accessibilité: état disabled du bouton confirmer */
+.btn-confirmation[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}

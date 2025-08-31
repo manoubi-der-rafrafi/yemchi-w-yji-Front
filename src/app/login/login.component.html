@@ -1,0 +1,72 @@
+
+ <app-hero-login></app-hero-login> 
+<div class="login-box" role="dialog" aria-labelledby="formTitle">
+  <h2 id="formTitle" style="margin-top: -10px;">Connectez-vous</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+
+    <!-- Message d'erreur global -->
+    <div *ngIf="errorMessage" id="formErrors" class="error-message" role="alert">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Champ e-mail -->
+    <div class="input-wrapper">
+      <img src="login/Email.png" class="icon" alt="Icône email" aria-hidden="true" />
+      <input
+        type="email"
+        placeholder="Email"
+        formControlName="email"
+        required
+        autocomplete="email"
+        [attr.aria-invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+      />
+    </div>
+    <div class="error" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+      Adresse email invalide.
+    </div>
+
+    <br />
+
+    <!-- Champ mot de passe -->
+    <div class="input-wrapper">
+      <img src="login/security.png" class="icon" alt="Icône mot de passe" aria-hidden="true" />
+      <input
+        [type]="showPass ? 'text' : 'password'"
+        placeholder="Mot de passe"
+        formControlName="password"
+        required
+        autocomplete="current-password"
+        [attr.aria-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+      />
+      <button
+        type="button"
+        class="eye-btn"
+        (click)="togglePass()"
+        [attr.aria-label]="showPass ? 'Masquer le mot de passe' : 'Afficher le mot de passe'"
+      >
+        <img
+          [src]="showPass ? 'login/security.png' : 'login/yeux.png'"
+          alt="Afficher / masquer le mot de passe"
+          aria-hidden="true"
+        />
+      </button>
+    </div>
+    <div class="error" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+      Le mot de passe est requis.
+    </div>
+
+    <br />
+
+    <!-- Bouton de connexion -->
+     <button type="submit" class="primary">Connexion</button>
+
+    <br /><br />
+
+    <!-- Liens secondaires -->
+    <div class="links">
+      <a routerLink="/signup">Créer un compte</a>
+      <a routerLink="/forgot-password">Mot de passe oublié</a>
+    </div>
+  </form>
+</div>

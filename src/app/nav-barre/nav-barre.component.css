@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,600;0,700;1,700&display=swap');
+
+header {
+  border-bottom: 2px solid #ff7b00;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 32px;
+  background-color: #fff;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 38px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.brand-name {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  font-style: italic;
+  margin-left: 3px;
+  letter-spacing: 0.5px;
+}
+
+/* Centrage du bloc central */
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  font-family: 'Roboto', Arial, sans-serif;
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+  letter-spacing: 0.2px;
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a.semibold {
+  font-weight: 600;
+}
+
+.nav-links a.bold {
+  font-weight: 700;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: #FF6B00;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover {
+  color: #FF6B00;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a.active {
+  color: #007BFF;
+}
+
+.nav-links a.active::after {
+  background-color: #007BFF;
+  width: 100%;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px; /* espace entre CONNECTER et la roue */
+}
+
+/* Style du bouton CONNECTER */
+.connecter-btn {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: black;
+  text-decoration: none;
+  position: relative;
+  padding: 0.5rem;
+  transition: color 0.3s;
+}
+
+.connecter-btn:hover {
+  color: #FF6B00;
+}
+
+.settings img {
+  width: 40px;
+  height: 40px;
+}
+
+
+.burger-menu {
+  cursor: pointer;
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 10px 20px;
+  z-index: 999;
+}
+
+.nav-links-mobile {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nav-links-mobile a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-family: 'Roboto', Arial, sans-serif;
+  transition: color 0.3s ease;
+}
+
+.nav-links-mobile a:hover {
+  color: #FF6B00;
+}

@@ -1,0 +1,60 @@
+<div class="profile-wrapper">
+  <!-- Bloc profil principal -->
+  <div class="profile-card">
+    <div class="profile-img">
+      <div class="avatar-wrap">
+        <img
+           [src]="previewUrl || user.image || defaultAvatar" 
+          (error)="onImgError($event)"
+          alt="Photo de profil"
+          loading="lazy"
+        />
+
+        <input
+          id="avatarInput"
+          type="file"
+          accept="image/*"
+          (change)="onFileSelected($event)"
+          hidden
+        />
+
+        <label
+          for="avatarInput"
+          class="camera-btn camera--clean"
+          aria-label="Changer la photo"
+          data-tip="Changer"
+        >
+          <!-- Icône nette et lisible -->
+            <img src="profil/camera.png" alt=""/>
+        </label>
+
+
+      </div>
+    </div>
+
+
+    <div class="profile-details">
+      <h2>{{ user.nom }} {{ user.prenom }}</h2>
+
+      <p><i class="fas fa-envelope"></i> {{ user.email }}</p>
+      <p><i class="fas fa-phone-alt"></i> {{ user.telephone }}</p>
+      <p><i class="fas fa-map-marker-alt"></i> {{ user.adresse }}</p>
+
+      <hr>
+
+      <p><strong>Date de naissance :</strong>
+        <span>{{ user.dateNaissance}}</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- Bloc boutons d'action -->
+  <div class="profile-actions">
+    <button class="btn blue" (click)="onEdit()">✏️ Modifier mon profil</button>
+    <button class="btn dark" (click)="onHistory()">📜 Historique de commandes</button>
+    <button class="btn green" (click)="onFriends()">👥 Mes amis</button>
+    <button class="btn red" (click)="onLogout()">🚪 Se déconnecter</button>
+  </div>
+
+  
+</div>

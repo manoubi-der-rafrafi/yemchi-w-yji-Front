@@ -1,0 +1,127 @@
+.form-container {
+  background: #ffffff;
+  border-radius: 25px;
+  padding: 40px 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  max-width: 500px;
+  margin: 40px auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #1a1a1a;
+  font-size: 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #1ba4c7;
+  box-shadow: 0 0 6px rgba(27, 164, 199, 0.3);
+  outline: none;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+input[type='file'] {
+  padding: 10px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+button[type='submit'] {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(to right, #1ba4c7, #2bd7b3);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+button[type='submit']:hover {
+  background: linear-gradient(to right, #1998b9, #23c4a5);
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width: 600px) {
+  .form-container {
+    padding: 25px 20px;
+    border-radius: 15px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  button[type='submit'] {
+    font-size: 14px;
+  }
+}
+.bouton-panier {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #e67e22; /* orange */
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  margin: 20px 92% ;
+  position: fixed;
+}
+
+.bouton-panier:hover {
+  transform: scale(1.05);
+}
+
+.bouton-panier img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+.error {
+  font-size: 12px;
+  margin-top: 4px;
+  color: #c62828; /* rouge lisible */
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border-color: #c62828;
+}

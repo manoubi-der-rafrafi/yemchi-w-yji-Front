@@ -1,0 +1,105 @@
+.login-box {
+  max-width: 420px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 2rem;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.16);
+  text-align: center;
+  position: relative;
+  top: -130px; /* ✅ remonte plus haut comme la maquette cible */
+  z-index: 2;
+}
+
+.login-box h2 {
+  margin-bottom: 2rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: lowercase;
+}
+
+.input-wrapper {
+  position: relative;
+  margin-bottom: 1.4rem;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper .icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem 3rem;
+  border: 1px solid #d0d9e1;
+  border-radius: 14px;
+  background: #ffffff;
+  font-size: 0.95rem;
+  transition: border-color 0.25s;
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: #0089b9;
+}
+
+.input-wrapper .eye-btn {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.input-wrapper .eye-btn img {
+  width: 30px;
+  height: 30px;
+}
+
+button.primary {
+  width: 100%;
+  padding: 0.9rem 0;
+  margin-top: 0.4rem;
+  background: #0089b9;
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+button.primary:hover {
+  background: #006e98;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.6rem;
+}
+
+.links a {
+  font-size: 0.85rem;
+  color: #0030c4;
+  text-decoration: underline;
+}
+
+.links a:hover {
+  text-decoration: none;
+}
+
+

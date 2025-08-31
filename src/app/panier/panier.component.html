@@ -1,0 +1,102 @@
+<br />
+<div class="produits-container">
+
+  <h2 style="text-align: center;">Produits Pour Livrer</h2>
+  <p style="text-align:center; color: #777; margin-top: -10px;">
+    Gérez votre commande ici avant de confirmer
+  </p>
+  <br />
+
+  <!-- ÉTATS: chargement / erreur / contenu -->
+  <ng-container *ngIf="isLoading; else notLoading">
+    <div class="empty-state skeleton">
+      <div class="empty-emoji" aria-hidden="true">🛒</div>
+      <h3>Chargement du panier…</h3>
+      <p>Veuillez patienter.</p>
+    </div>
+  </ng-container>
+
+  <ng-template #notLoading>
+    <ng-container *ngIf="!loadError; else errorTpl">
+
+      <!-- CONTENU PRINCIPAL SI PRODUITS -->
+      <div class="contenu-principal" *ngIf="hasProduits(); else emptyTpl">
+        <!-- Liste des produits -->
+        <div class="liste-produits">
+          <table>
+            <thead>
+              <tr>
+                <th>Article</th>
+                <th>Prix</th>
+                <th>Qté</th>
+                <th>Sous-total</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let produit of produits; trackBy: trackByProduitId">
+                <td class="article">
+                  <img [src]="produit.image1"
+                       alt="{{ produit.nom }}"
+                       />
+                  <div>{{ produit.nom }}</div>
+                </td>
+                <td>{{ produit?.prix }} DT</td>
+                <td>
+                  <input type="number" [(ngModel)]="produit.quantite" min="1" />
+                </td>
+                <td>{{ (produit?.prix || 0) * (produit?.quantite || 0) }} DT</td>
+                <td>
+                  <button class="supprimer" (click)="supprimerProduit(produit)">SUPPRIMER</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Résumé de commande -->
+        <div class="resume-commande">
+          <h4>Sommaire</h4>
+          <p>Total de la commande: <strong>{{ getTotal() }} DT</strong></p>
+
+          <button class="btn-ajout" (click)="GoAjoutProduitClient()">AJOUTER UN PRODUIT</button>
+          <button class="btn-confirmation" (click)="confirmerCommande()" [disabled]="!hasProduits()">
+            CONFIRMER COMMANDE
+          </button>
+        </div>
+      </div>
+
+      <!-- ÉTAT VIDE -->
+      <ng-template #emptyTpl>
+        <div class="empty-state">
+          <div class="empty-emoji" aria-hidden="true">🛒</div>
+          <h3>Votre panier est vide</h3>
+          <p>
+            Ajoutez votre premier produit pour démarrer votre commande.  
+            Vous pourrez ensuite ajuster les quantités et confirmer.
+          </p>
+          <div class="empty-actions">
+            <button class="btn-ajout" (click)="GoAjoutProduitClient()">
+              + Ajouter un produit
+            </button>
+          </div>
+        </div>
+      </ng-template>
+
+    </ng-container>
+
+    <!-- ERREUR -->
+    <ng-template #errorTpl>
+      <div class="empty-state">
+        <div class="empty-emoji" aria-hidden="true">⚠️</div>
+        <h3>Oups, un problème est survenu</h3>
+        <p>{{ loadError }}</p>
+        <div class="empty-actions">
+          <button class="btn-ajout" (click)="GoAjoutProduitClient()">
+            Ajouter un produit
+          </button>
+        </div>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>
