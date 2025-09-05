@@ -8,13 +8,14 @@ import { Produit } from '../models/produit.model';
 @Injectable({ providedIn: 'root' })
 export class ProduitService {
   // Si vous avez un environment: private apiUrl = `${environment.apiUrl}/produits`;
-  private apiUrl = 'http://192.168.168.241:8081/api/produits';
+  private apiUrl = 'http://192.168.177.241:8081/api/produits';
 
   constructor(private http: HttpClient) {}
 
   /** Récupérer tous les produits */
   getAll(): Observable<Produit[]> {
-    return this.http.get<Produit[]>(this.apiUrl);
+    return this.http.get<Produit[]
+    >(this.apiUrl);
   }
 
   /** Récupérer un produit par ID (objet unique) */
@@ -59,7 +60,7 @@ uploadProduitImage(file: File) {
   const fd = new FormData();
   fd.append('image', file);
   return this.http.post<{ success: boolean; url?: string; message: string }>(
-    'http://192.168.168.241:8081/api/produits/upload',
+    'http://192.168.177.241:8081/api/produits/upload',
     fd
   );
 }

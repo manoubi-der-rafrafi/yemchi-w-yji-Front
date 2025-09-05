@@ -4,14 +4,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, EMPTY } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Utilisateur } from '../models/utilisateur.model'; // <-- adapte le chemin si besoin
+import { Ami } from '../models/ami.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiLogin = 'http://192.168.168.241:8081/api/utilisateur/login';
-  private apiRegister = 'http://192.168.168.241:8081/api/utilisateur/register';
+  private apiLogin = 'http://192.168.177.241:8081/api/utilisateur/login';
+  private apiRegister = 'http://192.168.177.241:8081/api/utilisateur/register';
   // (optionnel) endpoint pour récupérer l'utilisateur courant
-  private apiMe = 'http://192.168.168.241:8081/api/utilisateur/me';
-  private baseUrl = 'http://192.168.168.241:8081/api/utilisateur';
+  private apiMe = 'http://192.168.177.241:8081/api/utilisateur/me';
+  private baseUrl = 'http://192.168.177.241:8081/api/utilisateur';
   // Etat de connexion
   private connectedSubject: BehaviorSubject<boolean>;
   public isConnected$: Observable<boolean>;
@@ -157,5 +158,18 @@ leaveAppBeacon(): void {
   // Endpoint POST pour le beacon (voir back ci-dessous)
   navigator.sendBeacon(`${this.baseUrl}/${id}/status`, body);
 }
+// GET /api/utilisateur/search/numero?numero=xxxx
+// ✅ Retourne un seul utilisateur
+chercherParNumero(numero: string): Observable<Utilisateur> {
+  return this.http.get<Utilisateur>(`${this.baseUrl}/search/numero`, {
+    params: { numero }
+  });
+}
+chercherParEmail(email: string): Observable<Utilisateur> {
+  return this.http.get<Utilisateur>(`${this.baseUrl}/search/email`, {
+    params: { email }
+  });
+}
+
 
 }

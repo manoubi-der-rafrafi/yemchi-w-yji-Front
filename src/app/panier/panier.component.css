@@ -189,3 +189,15 @@ button[class^="btn-"] {
   box-shadow: none;
   transform: none;
 }
+.detail {
+  color: blue;        /* texte bleu */
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.detail:hover {
+  text-decoration: underline; /* souligné au hover */
+  color: #004085;             /* bleu plus foncé */
+}

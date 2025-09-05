@@ -1,31 +1,74 @@
 <div class="amis-container">
   <div class="amis-header">
-  <h2 class="amis-title">👥 Mes amis</h2>
+    <div class="segment">
+  <div class="indicator" [style.transform]="viewMode === 'invitations' ? 'translateX(100%)' : 'translateX(0)'" ></div>
 
+  <button class="seg-btn" [class.active]="viewMode==='amis'" (click)="viewMode='amis'">
+    Mes amis
+  </button>
+
+  <button class="seg-btn" [class.active]="viewMode==='invitations'" (click)="viewMode='invitations'">
+    Mes invitations
+  </button>
+</div>
+
+
+
+
+  
   <!-- zone actions à droite -->
   <div class="amis-actions">
     <!-- interrupteur caché -->
     <input id="toggle-add" type="checkbox" class="toggle-check" />
 
     <!-- ⚠️ garde tes classes de bouton existantes, ajoute seulement 'ajouter-ami-btn' si tu veux -->
-    <label for="toggle-add" class="ajouter-ami-btn">
+    <label for="toggle-add" class="ajouter-ami-btn" (click)="searchedUser=null">
       <!-- laisse ton contenu de bouton habituel -->
       ➕ Ajouter un ami
     </label>
 
     <!-- champ qui apparaît EXACTEMENT à droite du bouton -->
-    <input
-      type="text"
-      class="slide-input"
-      placeholder="Email ou identifiant…"
-      aria-label="Email ou identifiant"
-    />
+    <!-- champ de recherche -->
+<input
+  type="text"
+  class="slide-input"
+  placeholder="Numéro (8 chiffres) ou email…"
+  aria-label="Recherche par numéro ou email"
+  #searchInput
+  (input)="rechercheSmart(searchInput.value)"
+/>
+
+
+<!-- Résultat juste sous le champ -->
+<div class="result-container">
+  <div *ngIf="searchedUser" class="search-result">
+    <div class="ami-card">
+      <img [src]="searchedUser.image || 'profil/default.png'" alt="Photo utilisateur" class="ami-photo" />
+      <div class="ami-info">
+        <h3>{{ searchedUser.nom }} {{ searchedUser.prenom }}</h3>
+        <p>{{ searchedUser.email }}</p>
+        <p>{{ searchedUser.telephone }}</p>
+      </div>
+
+      <!-- Bouton envoyer invitation -->
+      <button
+        class="btn-inviter"
+        [disabled]="inviteLoading || inviteSent || isSelf(searchedUser.id)"
+        (click)="envoyerInvitation(searchedUser.id)">
+        {{ inviteSent ? 'Invitation envoyée' : (inviteLoading ? 'Envoi…' : 'Ajouter Ami(e)') }}
+      </button>
+    </div>
+
+    <p class="invite-error" *ngIf="inviteError">{{ inviteError }}</p>
+  </div>
+</div>
+
   </div>
 </div>
 
 
 
-
+<div *ngIf="viewMode === 'amis'">
   <div class="amis-list" *ngIf="amis && amis.length > 0; else noFriends">
     <div class="ami-card" *ngFor="let ami of amis">
       <img [src]="ami.image || 'profil/default.png'" alt="Photo ami" class="ami-photo">
@@ -46,4 +89,34 @@
   <ng-template #noFriends>
     <p class="no-friends">Vous n’avez pas encore d’amis 🥲</p>
   </ng-template>
+</div>
+<!-- INVITATIONS REÇUES -->
+<div *ngIf="viewMode === 'invitations'">
+  <div class="amis-list" *ngIf="receivedInvitations && receivedInvitations.length > 0; else noInvitations">
+    <div class="ami-card" *ngFor="let u of receivedInvitations">
+      <img [src]="u.image || 'profil/default.png'" alt="Photo demandeur" class="ami-photo">
+
+      <div class="ami-info">
+        <h3>
+          {{ u.nom }} {{ u.prenom }}
+        </h3>
+        <p>{{ u.email }}</p>
+        <p>{{ u.telephone }}</p>
+      </div>
+
+      <div class="invitation-actions">
+        <button type="button" class="btn-accept" (click)="onAcceptInvitation(u.id)">Accepter</button>
+        <button type="button" class="btn-refuse" (click)="onRefuseInvitation(u.id)">Refuser</button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noInvitations>
+    <p class="no-friends">Aucune invitation reçue pour le moment ✉️</p>
+  </ng-template>
+</div>
+
+
+
+
 </div>

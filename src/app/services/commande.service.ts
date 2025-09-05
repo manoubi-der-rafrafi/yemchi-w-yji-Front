@@ -8,7 +8,7 @@ import { Commande } from '../models/commande.model';
 @Injectable({ providedIn: 'root' })
 export class CommandeService {
   // Si tu as environment: private apiUrl = `${environment.apiUrl}/commandes`;
-  private apiUrl = 'http://192.168.168.241:8081/api/commandes';
+  private apiUrl = 'http://192.168.177.241:8081/api/commandes';
 
   constructor(private http: HttpClient) {}
 
@@ -51,5 +51,7 @@ export class CommandeService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
-  
+  confirmerCommande(id: number): Observable<Commande> {
+    return this.http.put<Commande>(`${this.apiUrl}/${id}/confirmer`, {});
+  }
 }

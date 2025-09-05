@@ -190,7 +190,7 @@ role: string | null = null;
       this.produitForm.value.image1 = res.url ;
       console.log(this.produitForm.value.image1 + res.url);
     } catch (err:any) {
-      alert(`Erreur upload: ${err?.error?.message ?? 'voir console'}`);
+      alert(`Erreur upload1: ${err?.error?.message ?? 'voir console'}`);
       return;
     }
   }
@@ -202,7 +202,7 @@ role: string | null = null;
       this.produitForm.value.image2 = res.url ;
       console.log(this.produitForm.value.image2 + res.url);
     } catch (err:any) {
-      alert(`Erreur upload: ${err?.error?.message ?? 'voir console'}`);
+      alert(`Erreur upload2: ${err?.error?.message ?? 'voir console'}`);
       return;
     }
   }
@@ -214,7 +214,7 @@ role: string | null = null;
       this.produitForm.value.image3 = res.url ;
       console.log(this.produitForm.value.image3 + res.url);
     } catch (err:any) {
-      alert(`Erreur upload: ${err?.error?.message ?? 'voir console'}`);
+      alert(`Erreur upload3: ${err?.error?.message ?? 'voir console'}`);
       return;
     }
   }

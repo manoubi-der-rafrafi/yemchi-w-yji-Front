@@ -1,11 +1,24 @@
 <app-nav-barre></app-nav-barre>
-<router-outlet></router-outlet>
+
+<div class="page-container">
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="simple-footer" *ngIf="showFooter">
+    <div class="footer-center">
+      <a href="#">Législation & RGPD</a>
+      <span>© 2025 TRANSPORT BILLAUD</span>
+      <a href="#">Mettre à jour mon site internet</a>
+    </div>
+  </footer>
+</div>
 
 <button class="scroll-top" *ngIf="showButton" (click)="scrollToTop()">
   <span class="arrow-up"></span>
 </button>
+
 <div class="fixed-contact-icons">
-  
   <a href="tel:+21652246256" aria-label="Téléphone">
     <img src="\home\Icone\telIcone.png" alt="Téléphone" />
   </a>
@@ -16,15 +29,3 @@
     <img src="home\Icone\instagramIcone.png" alt="Instagram" />
   </a>
 </div>
-<br> <br>
-<footer class="simple-footer" *ngIf="showFooter" style="margin-top: 200px;">
-  <div class="footer-center">
-    <a href="#">Législation & RGPD</a>
-    <span>© 2025 TRANSPORT BILLAUD</span>
-    <a href="#">Mettre à jour mon site internet</a>
-  </div>
-</footer>
-
-
-
-

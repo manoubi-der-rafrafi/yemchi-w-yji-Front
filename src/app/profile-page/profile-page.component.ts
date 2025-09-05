@@ -60,21 +60,7 @@ export class ProfilePageComponent implements OnInit {
       }
     }
 
-    // // 3) Rafraîchir depuis l’API (source de vérité)
-    // this.authService.getCurrentUser().subscribe({
-    //   next: (user) => {
-    //     // Normaliser pour éviter les "undefined"
-    //     this.user = { ...this.defaultUser(), ...user };
-    //   },
-    //   error: (err) => {
-    //     console.error('Erreur lors de la récupération du user:', err);
-    //     // Si token expiré / non autorisé → logout + redirection
-    //     if (err?.status === 401 || err?.status === 403) {
-    //       this.authService.logout?.();
-    //       this.router.navigate(['/login']);
-    //     }
-    //   }
-    // });
+    
   }
 
   private defaultUser(): Utilisateur {
@@ -114,7 +100,7 @@ export class ProfilePageComponent implements OnInit {
 
   onFriends() {
     // Redirige vers la liste d'amis
-    // this.router.navigate(['/friends']);
+    this.router.navigate(['/mesAmis']);
   }
 
   onLogout() {

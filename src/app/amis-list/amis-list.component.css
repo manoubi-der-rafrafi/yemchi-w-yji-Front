@@ -197,3 +197,131 @@
 @media (max-width: 520px){
   #toggle-add:checked ~ .slide-input{ width: 200px; }
 }
+/* conteneur qui suit l'input */
+.result-container {
+  position: absolute;       /* positionne par rapport au parent */
+  top: 100%;                /* juste en dessous de l’input */
+  left: 0;
+  width: 100%;              /* même largeur que l’input */
+  z-index: 1000;            /* au-dessus du reste */
+  margin-top: 4px;
+}
+
+/* style du résultat */
+.search-result {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  padding: 10px;
+}
+
+.no-result {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 14px;
+  color: #b91c1c;
+}
+.amis-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  position: relative;  /* ✅ permet au résultat de se caler sous l’input */
+}
+.btn-inviter {
+  margin-left: auto;
+  background: linear-gradient(135deg, #34d399, #059669);
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;  /* pill */
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  height: 38px;
+  transition: opacity 0.2s;
+}
+.btn-inviter:hover {
+  opacity: 0.85;
+}
+/* conteneur du segment : une seule hauteur fixe */
+.segment {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  width: 290px;              /* ajuste si besoin */
+  height: 44px;              /* HAUTEUR FIXE → pas de saut */
+  border: 1px solid #d5d8e0;
+  border-radius: 10px;
+  background: #fff;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* “slider” animé derrière le bouton actif */
+.segment .indicator {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: calc(50% - 6px);
+  background: #4f46e5;
+  border-radius: 8px;
+  transition: transform .25s ease;
+  z-index: 0;
+}
+
+/* bouton de l’onglet */
+.segment .seg-btn {
+  position: relative;
+  z-index: 1;               /* au-dessus du slider */
+  border: 0;
+  background: transparent;  /* on ne change pas border/padding entre les états */
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;         /* même poids dans les 2 états → pas de shift */
+  line-height: 1;           /* fixe la hauteur de ligne */
+  color: #111827;
+  height: 100%;
+  padding: 0 16px;          /* padding identique */
+}
+
+/* état actif : seulement la couleur du texte change */
+.segment .seg-btn.active {
+  color: #fff;
+}
+.invitation-actions {
+  display: flex;
+  gap: 10px;
+  margin-left: auto; /* pousse les boutons à droite */
+  align-items: center;
+}
+
+.btn-accept,
+.btn-refuse {
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .12s ease, opacity .2s ease;
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+  white-space: nowrap;
+}
+
+.btn-accept {
+  background: #10b981;      /* vert */
+  color: #fff;
+}
+.btn-accept:hover { transform: translateY(-1px); }
+.btn-accept:active { transform: translateY(0); opacity: .9; }
+
+.btn-refuse {
+  background: #ef4444;      /* rouge */
+  color: #fff;
+}
+.btn-refuse:hover { transform: translateY(-1px); }
+.btn-refuse:active { transform: translateY(0); opacity: .9; }

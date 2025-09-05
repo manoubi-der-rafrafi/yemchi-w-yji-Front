@@ -138,3 +138,24 @@ body, html {
 .simple-footer {
   flex-shrink: 0;
 }
+.simple-footer {
+  margin-top: auto; /* pousse le footer tout en bas */
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.page-container {
+  min-height: 100vh;         /* occupe toute la hauteur */
+  display: flex;
+  flex-direction: column;    /* colonne verticale */
+}
+
+.main-content {
+  flex: 1;                   /* prend tout l’espace dispo */
+}
+
+.simple-footer {
+  margin-top: auto;          /* pousse le footer en bas */
+}

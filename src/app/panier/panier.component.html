@@ -47,6 +47,8 @@
                 </td>
                 <td>{{ (produit?.prix || 0) * (produit?.quantite || 0) }} DT</td>
                 <td>
+                  <button class="detail" (click)="supprimerProduit(produit)">DÉTAIL</button>
+                
                   <button class="supprimer" (click)="supprimerProduit(produit)">SUPPRIMER</button>
                 </td>
               </tr>

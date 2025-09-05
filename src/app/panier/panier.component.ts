@@ -178,12 +178,9 @@ export class PanierComponent {
   if (!this.commande?.id) return;
 
   const id = Number(this.commande.id);
-  const payload: Partial<Commande> = { statut: 'confirmer' }; // ✅ seulement le statut
 
-  this.commandeService.update(id, payload).subscribe({
+  this.commandeService.confirmerCommande(id).subscribe({
     next: (updated) => {
-      // mets à jour l’état local sans recharger
-      this.commande = { ...(this.commande as Commande), statut: updated.statut ?? 'confirmer' };
       alert('Commande confirmée');
       this.router.navigate(['/']);
     },
