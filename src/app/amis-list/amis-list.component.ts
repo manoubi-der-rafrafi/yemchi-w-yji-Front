@@ -62,7 +62,7 @@ user: Utilisateur = {
         console.log('Amis récupérés :', data);
       },
       error: (err) => {
-        console.error('Erreur lors de la récupération des amis', err);
+        //console.error('Erreur lors de la récupération des amis', err);
       }
     });
   }
